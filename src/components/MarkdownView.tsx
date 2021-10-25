@@ -2,23 +2,28 @@ import React, { memo } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-const MarkdownView = memo(() => {
-  const markdown = `A paragraph with *emphasis* and **strong importance**.
+interface IProps {
+  markdown: string;
+  style: any;
+}
 
-> A block quote with ~strikethrough~ and a URL: [URL](https://reactjs.org)
+const MarkdownView: React.FC<IProps> = memo(({ markdown, style }) => {
+  //   const markdown = `A paragraph with *emphasis* and **strong importance**.
 
-* Lists
-* [ ] todo
-* [x] done
+  // > A block quote with ~strikethrough~ and a URL: [URL](https://reactjs.org)
 
-A table:
+  // * Lists
+  // * [ ] todo
+  // * [x] done
 
-| name | age |
-| ---- | --- |
-| yuta | 19  |
-`;
+  // A table:
+
+  // | name | age |
+  // | ---- | --- |
+  // | yuta | 19  |
+  // `;
   return (
-    <div>
+    <div style={{ ...style }}>
       <ReactMarkdown children={markdown} remarkPlugins={[remarkGfm]} />
     </div>
   );
